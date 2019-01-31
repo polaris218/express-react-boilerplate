@@ -77,6 +77,7 @@ class Login extends Component {
                     <FormControl margin="normal" required fullWidth>
                       <TextField
                         variant="outlined"
+                        type="password"
                         id="password"
                         name="password"
                         label="password"

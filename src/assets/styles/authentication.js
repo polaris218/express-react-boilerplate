@@ -65,6 +65,9 @@ const muiStyles = theme => ({
       '&:hover': {
         backgroundColor: '#fc7603',
       },
+      input: {
+        display: 'none',
+      },
 });
 
 export default muiStyles;
