@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Link from '@material-ui/core/Link';
 
 const mutStyle = theme => ({
@@ -27,26 +27,26 @@ class LoginBar extends Component {
                     to="/login" 
                     underline="none"
                 >
-                    <Button
+                    <Fab
                         type="button"
-                        variant="extendedFab"
+                        variant="extended"
                         className={classes.loginButton}
                     >
                     Log In
-                    </Button>
+                    </Fab>
                 </Link>
                 <Link 
                     component={RouterLink} 
                     to="/signup"
                     underline="none"
                 >
-                    <Button
+                    <Fab
                         type="button"
-                        variant="extendedFab"
+                        variant="extended"
                         className={classes.loginButton}
                     >
-                    Sing Up
-                    </Button>
+                    Sign Up
+                    </Fab>
                 </Link>
             </div>
          );

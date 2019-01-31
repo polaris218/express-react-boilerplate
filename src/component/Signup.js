@@ -11,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 import muiStyles from '../assets/styles/authentication';
 import Offerbrite from '../assets/img/offer_brite-blue.png';
@@ -128,6 +128,7 @@ class Signup extends Component {
                             component="span"
                           >
                             upload
+                            <CloudUploadIcon />
                           </Button>
                         </label>
                     </FormControl>

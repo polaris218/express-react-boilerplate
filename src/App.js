@@ -5,6 +5,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import NavBar from './component/NavBar';
 import Login from './component/Login';
 import Signup from './component/Signup';
+import Bottom from './component/Bottom';
+
 import './App.css';
 import Image from './assets/img/bg-sign.jpg';
 
@@ -27,6 +29,7 @@ class App extends Component {
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
             </Switch>
+          <Bottom />
         </div>
       </Router>
     );

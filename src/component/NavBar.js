@@ -51,7 +51,7 @@ class NavBar extends Component {
                             Add Offer
                             </Button>
                             <div className={classes.searchbar}>
-                                <div className={classes.iconButton} square>
+                                <div className={classes.iconButton}>
                                     <SearchIcon />
                                 </div>
                                 <InputBase 
