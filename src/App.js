@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import withStyles from '@material-ui/core/styles/withStyles';
+
 import NavBar from './component/NavBar';
 import Login from './component/Login';
 import Signup from './component/Signup';
 import './App.css';
+import Image from './assets/img/bg-sign.jpg';
 
-
+const styles = theme => ({
+  wholeStyle: {
+    backgroundImage: `url(${Image})`,
+  }
+})
 class App extends Component {
   // constructor(props) {
   //   super(props);
   // }
   render() {
-  
+    const { classes } = this.props;
     return (
       <Router>
-        <div>
+        <div className={classes.wholeStyle}>
           <NavBar />
-          <Route>
-            <Route path="/login" exact component={Login} />
-            <Route path="/signup" exact component={Signup} />
-          </Route>
+            <Switch>
+              <Route path="/login" exact component={Login} />
+              <Route path="/signup" exact component={Signup} />
+            </Switch>
         </div>
       </Router>
     );
   }
 }
 
-export default (App);
+export default withStyles(styles)(App);

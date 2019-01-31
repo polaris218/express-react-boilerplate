@@ -20,11 +20,12 @@ class Signup extends Component {
     handleSubmit(event) {
         event.preventDefault();
     }
-    render() { 
+    render() {
+        const { classes } = this.props
         return ( 
-            <div>
+            <main>
 
-            </div>
+            </main>
          );
     }
 }
