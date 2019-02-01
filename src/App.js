@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import NavBar from './component/NavBar';
+import Home from './component/Home';
 import Login from './component/Login';
 import Signup from './component/Signup';
 import Bottom from './component/Bottom';
@@ -26,6 +27,7 @@ class App extends Component {
         <div className={classes.wholeStyle}>
           <NavBar />
             <Switch>
+              <Route path="/" exact component={Home} />
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
             </Switch>
