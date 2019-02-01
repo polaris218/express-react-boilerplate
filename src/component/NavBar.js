@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
-import GridList from '@material-ui/core/GridList';
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
+import Link from '@material-ui/core/Link';
 import SearchIcon from '@material-ui/icons/Search';
 
 import LoginBar from './authentication/LoginBar';
@@ -43,13 +39,19 @@ class NavBar extends Component {
                     </Grid>
                     <Grid item md={6}>
                         <div className={classes.search}>
-                            <Button 
-                                type="submit"
-                                variant="contained"
-                                className={classes.addoffer}
+                          <Link 
+                            component={RouterLink} 
+                            to="/createoffer"
+                            underline='none'
                             >
-                            Add Offer
-                            </Button>
+                            <Button 
+                                    type="submit"
+                                    variant="contained"
+                                    className={classes.addoffer}
+                                >
+                                +Add Offer
+                                </Button>
+                          </Link>
                             <div className={classes.searchbar}>
                                 <div className={classes.iconButton}>
                                     <SearchIcon />

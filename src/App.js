@@ -6,6 +6,7 @@ import NavBar from './component/NavBar';
 import Home from './component/Home';
 import Login from './component/Login';
 import Signup from './component/Signup';
+import CreateOffer from './component/CreateOffer';
 import Bottom from './component/Bottom';
 
 import './App.css';
@@ -30,6 +31,7 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
+              <Route path="/createoffer" exact component={CreateOffer} />
             </Switch>
           <Bottom />
         </div>

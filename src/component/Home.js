@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 
 import PaginationBar from './Category/PaginationBar';
 import ViewOffer from './Category/ViewOffer';
-import Image from '../assets/img/dummy-test.jpg';
 
 const muiStyle = theme => ({
     products: {
@@ -33,6 +32,11 @@ class Home extends Component {
   handleClick(offset) {
     this.setState({offset})
   }
+
+  /**
+   * @see https://www.npmjs.com/package/material-ui-flat-pagination
+   * for pagination
+   */
   render() { 
     const { classes } = this.props;
     return (
