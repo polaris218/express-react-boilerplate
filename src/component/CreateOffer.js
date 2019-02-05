@@ -15,7 +15,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { InputAdornment } from '@material-ui/core';
 
 import muiStyle from '../assets/styles/createoffer';
-import AddPhoto from '../assets/img/addphoto.gif';
 
 
 const options = [
@@ -84,7 +83,7 @@ class CreateOffer extends Component {
                       type="file"
                     />
                     <img
-                      src={AddPhoto}
+                      src={require('../assets/img/addphoto.gif')}
                       alt="upload"
                     />
                   </label>
@@ -97,7 +96,7 @@ class CreateOffer extends Component {
                       type="file"
                     />
                     <img
-                      src={AddPhoto}
+                      src={require('../assets/img/addphoto.gif')}
                       alt="upload"
                     />
                   </label>
@@ -110,7 +109,7 @@ class CreateOffer extends Component {
                       type="file"
                     />
                     <img
-                      src={AddPhoto}
+                      src={require('../assets/img/addphoto.gif')}
                       alt="upload"
                     />
                   </label>
@@ -123,7 +122,7 @@ class CreateOffer extends Component {
                       type="file"
                     />
                     <img
-                      src={AddPhoto}
+                      src={require('../assets/img/addphoto.gif')}
                       alt="upload"
                     />
                   </label>

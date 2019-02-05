@@ -5,7 +5,6 @@ const muiStyles = theme => ({
     },
     card: {
         display: 'flex',
-        
         paddingTop: theme.spacing.unit * 3,
         paddingLeft: theme.spacing.unit * 3,
         paddingBottom: theme.spacing.unit * 3,

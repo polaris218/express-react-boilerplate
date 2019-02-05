@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
@@ -10,7 +11,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import muiStyle from '../../assets/styles/card';
-import dummyTest from '../../assets/img/dummy-test.jpg';
 
 const imgStyles = {
   imgStyle: {
@@ -62,7 +62,7 @@ class ViewOffer extends Component {
               <img 
                 className={classes.img} 
                 alt="complex" 
-                src={dummyTest}
+                src={require('../../assets/img/dummy-test.jpg')}
                 style={imgStyles.imgStyle} 
               />
             </ButtonBase>
@@ -105,7 +105,12 @@ class ViewOffer extends Component {
             >
               {
                 options.map(option => (
-                  <MenuItem key={option} onClick={this.handleClose}>
+                  <MenuItem 
+                    key={option} 
+                    component={RouterLink} 
+                    onClick={this.handleClose}
+                    to={`/${option}`}
+                  >
                     {option}
                   </MenuItem>
                 ))

@@ -10,9 +10,6 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import LoginBar from './authentication/LoginBar';
 import muiStyles from '../assets/styles/NavBar';
-import Logo from '../assets/img/offer_brite-white.png';
-
-
 
 const styles ={
     imgStyle: {
@@ -31,7 +28,7 @@ class NavBar extends Component {
                 <Grid container>
                     <Grid item md={3}>
                         <img 
-                            src={Logo} 
+                            src={require('../assets/img/offer_brite-white.png')} 
                             alt="logo" 
                             className={classes.img}
                             style={styles.imgStyle}

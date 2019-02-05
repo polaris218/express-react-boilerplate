@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import NavBar from './component/NavBar';
@@ -7,24 +7,19 @@ import Home from './component/Home';
 import Login from './component/Login';
 import Signup from './component/Signup';
 import CreateOffer from './component/CreateOffer';
+import ViewOffer from './component/ViewOffer';
 import Bottom from './component/Bottom';
 
-import './App.css';
-import Image from './assets/img/bg-sign.jpg';
-
-const styles = theme => ({
+const muiStyles = () => ({
   wholeStyle: {
-    backgroundImage: `url(${Image})`,
+    backgroundImage: `url(${'../img/bg-sign.jpg'})`
   }
 })
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
   render() {
     const { classes } = this.props;
     return (
-      <Router>
+      <Route>
         <div className={classes.wholeStyle}>
           <NavBar />
             <Switch>
@@ -32,12 +27,13 @@ class App extends Component {
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
               <Route path="/createoffer" exact component={CreateOffer} />
+              <Route path="/viewoffer" exact component={ViewOffer} />
             </Switch>
           <Bottom />
         </div>
-      </Router>
+      </Route>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(muiStyles)(App);

@@ -3,14 +3,20 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import route from './routes';
+import ssrRouter from './routes/rendering';
 
 const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', route);
+app.use('/api', route);
+/**
+ * @param {ssrRouter} crucial part for ServerSideRendering
+ */
+// app.use(ssrRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

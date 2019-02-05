@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,11 +13,8 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
-
+import { mapStateToProps, mapDispatchToProps } from '../actions/action';
 import muiStyles from '../assets/styles/authentication';
-import Offerbrite from '../assets/img/offer_brite-blue.png';
-
-
 
 class Login extends Component {
     constructor(props){
@@ -45,7 +43,7 @@ class Login extends Component {
                   <Grid container spacing={0} direction="row" justify="center" alignItems="center">
                       <img
                       className={classes.img}
-                      src={Offerbrite} 
+                      src={require('../assets/img/offer_brite-blue.png')} 
                       alt="offerbrite" 
                       />
                   </Grid>
@@ -71,7 +69,6 @@ class Login extends Component {
                       required
                       onChange={this.handleChange}
                     >
-
                     </TextField>
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
@@ -110,4 +107,4 @@ class Login extends Component {
     }
 }
  
-export default withStyles(muiStyles)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(muiStyles)(Login));

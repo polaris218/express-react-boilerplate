@@ -1,4 +1,4 @@
-import Signinbackground from '../img/bg-form.jpg';
+// import Signinbackground from '../img/bg-form.jpg';
 
 const muiStyles = theme => ({
     main: {
@@ -20,7 +20,7 @@ const muiStyles = theme => ({
         flexDirection: 'column',
         alignItems: 'center',
         padding: `${theme.spacing.unit * 10}px ${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px`,
-        backgroundImage: `url(${Signinbackground})`,
+        backgroundImage: `url(${'../img/bg-form.jpg'})`,
         borderRadius: 20,
       },
       avatar: {

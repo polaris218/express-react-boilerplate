@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 import PaginationBar from './Category/PaginationBar';
-import ViewOffer from './Category/ViewOffer';
+import Offerlist from './Category/Offerlist';
 
 const muiStyle = theme => ({
     products: {
@@ -52,8 +52,8 @@ class Home extends Component {
             <PaginationBar />
           </Grid>
           <Grid item md={1}></Grid>
-            <ViewOffer />
-            <ViewOffer />
+            <Offerlist />
+            <Offerlist />
           <Grid item md={1}></Grid>
           <PaginationBar />
         </Grid>
