@@ -15,6 +15,7 @@
     "material-ui-flat-pagination": "^3.2.0",
     "mongoose": "^5.4.9",
     "morgan": "^1.9.1",
+    "multer": "^1.4.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

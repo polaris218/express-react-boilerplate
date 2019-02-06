@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
@@ -22,13 +23,13 @@ class Logout extends Component {
     }
 
     handleClose() {
-        this.handleLogout();
     }
 
     handleLogout() {
         this.setState({
             anchorEl: null
         });
+        this.props.logoutWatcher();
     }
 
     handleClick(event) {
@@ -36,6 +37,7 @@ class Logout extends Component {
             anchorEl: event.currentTarget,
         });
     }
+
     render() { 
         const { anchorEl } = this.state;
         const { classes } = this.props;
@@ -53,10 +55,10 @@ class Logout extends Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.handleClose}>Account</MenuItem>
-                <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+                <MenuItem component={RouterLink} to="/" onClick={this.handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
-         );
+        );
     }
 }
  

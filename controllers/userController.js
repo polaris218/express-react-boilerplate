@@ -1,6 +1,7 @@
 import Joi from 'joi';
 import uuid from 'uuid-v4';
 import bcrypt from 'bcrypt';
+
 // import { author } from '../models';
 import { tokenSign } from '../middleware/token';
 
@@ -17,16 +18,19 @@ const validateCourse = (course) => {
 export const userInfo = (req, res) => {
   const email = req.app.get('email');
 };
+
 export const userSignup = (req, res) => {
   const {
-    username, email, password,
+    username, email, password
   } = req.body;
   const token = tokenSign(email);
   res.status(200).send(token);
 };
 export const userLogin = (req, res) => {
-  const { error } = validateCourse(req.body);
-  
+  const { error} = validateCourse(req.body);
+  const { email, password } = req.body;
+  const token = tokenSign(email);
+  res.status(200).send(token);
 };
 export const userInfoUpdate = (req, res) => {
   const { udata } = req.body;

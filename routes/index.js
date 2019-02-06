@@ -6,6 +6,9 @@ import {
     userInfoUpdate,
     userRemove,
 } from '../controllers/userController';
+import {
+    fileUpload
+} from '../controllers/loadController';
 
 const router = express.Router();
 
@@ -19,7 +22,7 @@ router.post('/usersignup', userSignup);
 
 router.post('/login', userLogin);
 
-// router.post('/file', fileUpload);
+router.post('/file', fileUpload);
 
 router.put('/userupdate', userInfoUpdate);
 

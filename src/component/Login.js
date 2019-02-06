@@ -34,6 +34,14 @@ class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        const { email, password } = this.state;
+        this.props.loginWatcher({
+          email, password,
+        });
+    }
+
+    componentWillReceiveProps(props) {
+      props.token ? props.history.push('/') : props.history.push('/login');
     }
     render() { 
         const { classes } = this.props;

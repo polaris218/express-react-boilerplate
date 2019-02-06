@@ -23,24 +23,35 @@ class Signup extends Component {
             email: '',
             confirm: '',
             password: '',
+            file: null,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
     }
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
         });
     };
+
+    handleUpload(event) {
+        this.setState({
+            file: event.target.files[0],
+        });
+    }
     handleSubmit(event) {
         event.preventDefault();
-        const { username, email, password } = this.state;
+        const { username, email, password, file } = this.state;
+        const formdata = new FormData();
+        formdata.append('file', file);
         this.props.signupWatcher({
             username, email, password
-        });
+        }, formdata);
+
     };
     componentWillReceiveProps(props) {
-        props.token && props.history.push('/viewoffer');
+        props.token && props.history.push('/');
     }
     render() {
         const { classes } = this.props;
@@ -88,7 +99,6 @@ class Signup extends Component {
                         required
                         onChange={this.handleChange}
                         >
-
                         </TextField>
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
@@ -102,7 +112,6 @@ class Signup extends Component {
                         onChange={this.handleChange}
                         required
                       >
-
                       </TextField>
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
@@ -116,7 +125,6 @@ class Signup extends Component {
                         required
                         onChange={this.handleChange}
                       >
-
                       </TextField>
                     </FormControl>
                     <FormControl>
@@ -124,20 +132,26 @@ class Signup extends Component {
                           accept="image/*"
                           className={classes.input}
                           id="contained-button-file"
-                          multiple
+                        //   multiple
+                          name="file"
                           type="file"
-                          onChange={this.handleChange}
+                          onChange={this.handleUpload}
+                          ref={(fileInput) => { this.fileInput = fileInput; }}
                         >
                         </input>
                         <label htmlFor="contained-button-file">
                           <Button
                             variant="contained"
-                            component="span"
+                            // component="span"
+                            type="button"
+                            onClick={() => this.fileInput.click()}
                           >
                             upload
                             <CloudUploadIcon />
-                          </Button>
+                          </Button>  
+                            <Typography>{this.state.file ? this.state.file.name : 'select Image'}</Typography>
                         </label>
+                        
                     </FormControl>
                     <Typography
                         align="center"

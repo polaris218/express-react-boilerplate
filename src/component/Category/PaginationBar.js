@@ -13,7 +13,7 @@ class PaginationBar extends Component {
         this.setState({offset})
     }
     render() { 
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return ( 
             <Pagination
                 limit={20}

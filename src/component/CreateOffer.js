@@ -16,13 +16,6 @@ import { InputAdornment } from '@material-ui/core';
 
 import muiStyle from '../assets/styles/createoffer';
 
-
-const options = [
-  'Category to be selected',
-  'Audi',
-  'BWM',
-];
-
 class CreateOffer extends Component {
   constructor(props) {
     super(props);

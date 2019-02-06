@@ -22,10 +22,7 @@ const userStyle = {
     height: '90%',
 }
 class ViewOffer extends Component {
-    
-  constructor(props) {
-      super(props);
-  }
+  
   render() { 
     const { classes } = this.props;
     return ( 

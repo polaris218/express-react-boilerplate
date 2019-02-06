@@ -37,9 +37,12 @@ export function* logoutEffectSaga() {
     console.log(e);
   }
 }
-export function* signupSaga(action) {
+export function* signupSaga(action, file) {
   try {
-    const { data } = yield call(ajaxApi, 'POST', '/api/usersignup', { ...action.payload });
+    const { authParams, file } = action.payload;
+    const { data } = yield call(ajaxApi, 'POST', '/api/usersignup', authParams );
+    yield call(uploadFileApi, file);
+    console.log(file);
     if (data === 'signupFailed') {
       yield put(signupFailed());
     } else {
