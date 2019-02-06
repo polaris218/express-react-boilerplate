@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import route from './routes';
+import route from './routes/index';
 import ssrRouter from './routes/rendering';
 
 const app = express();
@@ -13,6 +13,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', route);
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'))
+});
 /**
  * @param {ssrRouter} crucial part for ServerSideRendering
  */

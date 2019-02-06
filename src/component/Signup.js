@@ -24,18 +24,22 @@ class Signup extends Component {
             confirm: '',
             password: '',
         }
-        this.handleChange = this.handleChange.bind();
-        this.handleSubmit = this.handleSubmit.bind();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
-        })
-    }
+        });
+        console.log(this.state);
+    };
     handleSubmit(event) {
         event.preventDefault();
-        
-    }
+        const { username, email, password } = this.state;
+        this.props.signupWatcher({
+            username, email, password
+        });
+    };
     render() {
         const { classes } = this.props;
             return ( 
@@ -61,15 +65,14 @@ class Signup extends Component {
                     <FormControl margin="normal" required fullWidth>
                         <TextField
                         variant="outlined"
-                        id="name"
-                        name="name"
+                        id="username"
+                        name="username"
                         label="Business name"
                         className={classes.text}
                         autoFocus
                         required
                         onChange={this.handleChange}
                         >
-
                         </TextField>
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
