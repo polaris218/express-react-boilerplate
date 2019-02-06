@@ -31,7 +31,6 @@ class Signup extends Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     };
     handleSubmit(event) {
         event.preventDefault();
@@ -40,6 +39,9 @@ class Signup extends Component {
             username, email, password
         });
     };
+    componentWillReceiveProps(props) {
+        props.token && props.history.push('/viewoffer');
+    }
     render() {
         const { classes } = this.props;
             return ( 

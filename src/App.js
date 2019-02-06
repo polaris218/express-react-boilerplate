@@ -10,6 +10,8 @@ import CreateOffer from './component/CreateOffer';
 import ViewOffer from './component/ViewOffer';
 import Bottom from './component/Bottom';
 
+import PrivateRoute from './component/PrivateRoute';
+
 const muiStyles = () => ({
   wholeStyle: {
     backgroundImage: `url(${'../img/bg-sign.jpg'})`
@@ -26,8 +28,8 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
-              <Route path="/createoffer" exact component={CreateOffer} />
-              <Route path="/viewoffer" exact component={ViewOffer} />
+              <PrivateRoute path="/createoffer" exact component={CreateOffer} />
+              <PrivateRoute path="/viewoffer" exact component={ViewOffer} />
             </Switch>
           <Bottom />
         </div>

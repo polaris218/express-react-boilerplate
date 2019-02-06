@@ -8,6 +8,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Link from '@material-ui/core/Link';
 import SearchIcon from '@material-ui/icons/Search';
 
+import Logout from './authentication/Logout';
 import LoginBar from './authentication/LoginBar';
 import muiStyles from '../assets/styles/NavBar';
 
@@ -27,12 +28,14 @@ class NavBar extends Component {
             <Paper className={classes.paper} square>
                 <Grid container>
                     <Grid item md={3}>
+                      <Link component={RouterLink} to="/">
                         <img 
                             src={require('../assets/img/offer_brite-white.png')} 
                             alt="logo" 
                             className={classes.img}
                             style={styles.imgStyle}
                         />
+                      </Link>
                     </Grid>
                     <Grid item md={6}>
                         <div className={classes.search}>
@@ -40,14 +43,14 @@ class NavBar extends Component {
                             component={RouterLink} 
                             to="/createoffer"
                             underline='none'
-                            >
+                        >
                             <Button 
-                                    type="submit"
-                                    variant="contained"
-                                    className={classes.addoffer}
-                                >
-                                +Add Offer
-                                </Button>
+                                type="submit"
+                                variant="contained"
+                                className={classes.addoffer}
+                            >
+                            +Add Offer
+                            </Button>
                           </Link>
                             <div className={classes.searchbar}>
                                 <div className={classes.iconButton}>
@@ -61,7 +64,7 @@ class NavBar extends Component {
                         </div>
                     </Grid>
                     <Grid item md={3}>
-                        <LoginBar />
+                      { localStorage.getItem('token') ? <Logout /> : <LoginBar /> }
                     </Grid>
                 </Grid>
             </Paper>
