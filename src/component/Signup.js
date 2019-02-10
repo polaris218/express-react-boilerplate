@@ -45,9 +45,10 @@ class Signup extends Component {
         const { username, email, password, file } = this.state;
         const formdata = new FormData();
         formdata.append('file', file);
-        this.props.signupWatcher({
-            username, email, password
-        }, formdata);
+        formdata.append('username', username);
+        formdata.append('email', email);
+        formdata.append('password', password);
+        this.props.signupWatcher(formdata);
 
     };
     componentWillReceiveProps(props) {
@@ -60,9 +61,9 @@ class Signup extends Component {
                 <CssBaseline />
                   <Grid container spacing={0} direction="row" justify="center" alignItems="center">
                       <img
-                      className={classes.img}
-                      src={require('../assets/img/offer_brite-blue.png')} 
-                      alt="offerbrite" 
+                        className={classes.img}
+                        src={require('../assets/img/offer_brite-blue.png')} 
+                        alt="offerbrite" 
                       />
                   </Grid>
                   

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
@@ -14,7 +15,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { InputAdornment } from '@material-ui/core';
 
+import { mapStateToProps, mapDispatchToProps } from '../actions/action';
 import muiStyle from '../assets/styles/createoffer';
+
+const imgStyle = {
+  width: '150px',
+  height: '150px',
+};
 
 class CreateOffer extends Component {
   constructor(props) {
@@ -22,21 +29,73 @@ class CreateOffer extends Component {
     this.state = {
       open: false,
       category: '',
+      title: '',
+      description: '',
+      startdate: '',
+      enddate: '',
+      fullprice: '',
+      discount: '',
+      address: '',
+      phone: '',
+      site: '',
+      img:null,
+      img1:null,
+      img2:null,
+      img3:null,
+      imgpath: null,
+      imgsubpath1: null,
+      imgsubpath2: null,
+      imgsubpath3: null,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    const formdata = new FormData();
+    const { 
+      title,
+      category,
+      description,
+      startdate,
+      enddate,
+      fullprice,
+      discount,
+      address,
+      phone,
+      site,
+      img,
+      img1,
+      img2,
+      img3,
+    } = this.state;
+    // console.log(this.state);
+    formdata.append('title', title);
+    formdata.append('category', category);
+    formdata.append('description', description);
+    formdata.append('startdate', startdate);
+    formdata.append('enddate', enddate);
+    formdata.append('fullprice', fullprice);
+    formdata.append('discount', discount);
+    formdata.append('address', address);
+    formdata.append('phone', phone);
+    formdata.append('site', site);
+    formdata.append('file', img);
+    formdata.append('file', img1);
+    formdata.append('file', img2);
+    formdata.append('file', img3);
+    
+    this.props.privacyWatcher(formdata);
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
-    })
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleClose() {
@@ -47,6 +106,39 @@ class CreateOffer extends Component {
     this.setState({ open: true });
   }
 
+  handleUpload(event) {
+    if(event.target.files[0] !=null ) {
+      this.setState({
+        [event.target.name]: URL.createObjectURL(event.target.files[0]),
+      });
+      // const { imgpath, imgsubpath1, imgsubpath2, imgsubpath3 } = this.state;
+      console.log(event.target.name);
+      switch(event.target.name) {
+        case "imgpath":
+          this.setState({
+            img: event.target.files[0],
+          });
+        break;
+        case "imgsubpath1":
+          this.setState({
+            img1: event.target.files[0],
+          });
+        break;
+        case "imgsubpath2":
+          this.setState({
+            img2: event.target.files[0],
+          });
+        break;
+        case "imgsubpath3":
+          this.setState({
+            img3: event.target.files[0],
+          });
+        break;
+        default:
+        break;
+      }
+    }
+  }
   render() {
     const { classes } = this.props;
       return (
@@ -64,66 +156,83 @@ class CreateOffer extends Component {
                 porta. Maecenas ullamcorper vehicula ipsum non ultricies.
               </Typography>
             </Grid>
-            <form >
+            <form onSubmit={this.handleSubmit}>
               <Grid item container spacing={16} className={classes.offercontent}>
                 <Grid item xs={4} container className={classes.offerphoto} spacing={16}>
-                  <label htmlFor="contained-button-file" className={classes.imageLabelUpload}>
+                  {/* <label className={classes.imageLabelUpload}> */}
                     <input
                       accept="image/*"
                       className={classes.input}
                       id="contained-button-file"
-                      multiple
                       type="file"
+                      name="imgpath"
+                      onChange={ this.handleUpload }
+                      ref={(fileInput1) => { this.fileInput1=fileInput1; }}
                     />
                     <img
-                      src={require('../assets/img/addphoto.gif')}
+                      src={ this.state.imgpath ? this.state.imgpath : require('../assets/img/addphoto.gif')}
                       alt="upload"
+                      style ={ imgStyle }
+                      onClick={() => this.fileInput1.click()}
                     />
-                  </label>
-                  <label htmlFor="contained-button-file" className={classes.imageLabel}>
+                  {/* </label>
+                  <label className={classes.imageLabel}> */}
                     <input
                       accept="image/*"
                       className={classes.input}
                       id="contained-button-file"
-                      multiple
                       type="file"
+                      name="imgsubpath1"
+                      onChange={ this.handleUpload }
+                      ref={(fileInput2) => { this.fileInput2=fileInput2; }}
                     />
                     <img
-                      src={require('../assets/img/addphoto.gif')}
+                      src={ this.state.imgsubpath1 ? this.state.imgsubpath1 : require('../assets/img/addphoto.gif')}
                       alt="upload"
+                      style={ imgStyle }
+                      onClick={() => this.fileInput2.click()}
                     />
-                  </label>
-                  <label htmlFor="contained-button-file" className={classes.imageLabelUpload}>
+                  {/* </label>
+                  <label className={classes.imageLabelUpload}> */}
                     <input
                       accept="image/*"
                       className={classes.input}
                       id="contained-button-file"
-                      multiple
                       type="file"
+                      name="imgsubpath2"
+                      onChange={this.handleUpload}
+                      ref={(fileInput3) => { this.fileInput3=fileInput3; }}
                     />
                     <img
-                      src={require('../assets/img/addphoto.gif')}
+                      src={ this.state.imgsubpath2 ? this.state.imgsubpath2 : require('../assets/img/addphoto.gif')}
                       alt="upload"
+                      style={ imgStyle }
+                      onClick={() => this.fileInput3.click()}
                     />
-                  </label>
-                  <label htmlFor="contained-button-file" className={classes.imageLabel}>
+                  {/* </label>
+                  <label className={classes.imageLabel}> */}
                     <input
                       accept="image/*"
                       className={classes.input}
                       id="contained-button-file"
-                      multiple
                       type="file"
+                      name="imgsubpath3"
+                      onChange={this.handleUpload}
+                      ref={(fileInput4) => { this.fileInput4=fileInput4; }}
                     />
                     <img
-                      src={require('../assets/img/addphoto.gif')}
+                      src={ this.state.imgsubpath3 ? this.state.imgsubpath3 : require('../assets/img/addphoto.gif')}
                       alt="upload"
+                      style={ imgStyle }
+                      onClick={() => this.fileInput4.click()}
                     />
-                  </label>
+                  {/* </label> */}
                 </Grid>
                 <Grid item xs={7} className={classes.offerdesc}>
                   <InputBase 
                     className={classes.title}
                     placeholder="Title"
+                    name="title"
                     fullWidth
                     onChange={this.handleChange}
                   >
@@ -131,6 +240,7 @@ class CreateOffer extends Component {
                   <InputBase 
                     className={classes.description}
                     placeholder="Description"
+                    name="description"
                     rows='10'
                     fullWidth
                     multiline
@@ -144,21 +254,24 @@ class CreateOffer extends Component {
                   <TextField
                   id="date"
                   type="date"
+                  name="startdate"
                   className={classes.startDate}
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  onChange={event => this.setState({ startdate: event.target.value})}
                   >
                   </TextField>
                   <span className={classes.date}>To:</span>
                   <TextField
                     id="date"
                     type="date"
-                    
+                    name="enddate"
                     className={classes.startDate}
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    onChange={event => this.setState({ enddate: event.target.value})}
                   >
                   </TextField>
                   <FormControlLabel
@@ -169,17 +282,21 @@ class CreateOffer extends Component {
                     <span className={classes.date}>Full Price:</span>
                     <TextField
                       className={classes.price}
+                      name="fullprice"
                       InputProps={{
                         startAdornment:<InputAdornment position="start">$</InputAdornment>
                       }}
+                      onChange={this.handleChange}
                     >
                     </TextField>
                     <span className={classes.date}>Discount:</span>
                     <TextField
                       className={classes.price}
+                      name="discount"
                       InputProps={{
                         startAdornment:<InputAdornment position="start">%</InputAdornment>
                       }}
+                      onChange={this.handleChange}
                     >
                     </TextField>
                   </Grid>
@@ -193,6 +310,7 @@ class CreateOffer extends Component {
                         onOpen={this.handleOpen}
                         value={this.state.category}
                         onChange={this.handleChange}
+                        name="category"
                         inputProps={{
                           name: 'category',
                           id: 'category-to-be-selected'
@@ -206,12 +324,14 @@ class CreateOffer extends Component {
                   <InputBase 
                     className={classes.addrPhoneSite}
                     placeholder="Address"
+                    name="address"
                     fullWidth
                     onChange={this.handleChange}
                   >
                   </InputBase>
                   <InputBase 
                       className={classes.addrPhoneSite}
+                      name="phone"
                       placeholder="Phone"
                       fullWidth
                       onChange={this.handleChange}
@@ -219,6 +339,7 @@ class CreateOffer extends Component {
                   </InputBase>
                   <InputBase 
                       className={classes.addrPhoneSite}
+                      name="site"
                       placeholder="Site"
                       fullWidth
                       onChange={this.handleChange}
@@ -240,4 +361,4 @@ class CreateOffer extends Component {
   }
 }
  
-export default withStyles(muiStyle)(CreateOffer);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(muiStyle)(CreateOffer));

@@ -8,7 +8,8 @@ import {
 } from '../controllers/userController';
 import {
     fileUpload
-} from '../controllers/loadController';
+} from '../controllers/offerController';
+import { tokenCheck } from '../middleware/token';
 
 const router = express.Router();
 
@@ -22,7 +23,7 @@ router.post('/usersignup', userSignup);
 
 router.post('/login', userLogin);
 
-router.post('/file', fileUpload);
+router.post('/createoffer', tokenCheck, fileUpload);
 
 router.put('/userupdate', userInfoUpdate);
 

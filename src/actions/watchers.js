@@ -4,8 +4,8 @@ export function loginWatcher(authParams) {
 export function logoutWatcher() {
     return { type: 'LOGOUT_WATCHER' };
 }
-export function signupWatcher(authParams, file) {
-    return { type: 'SIGNUP_WATCHER', payload: {authParams, file} };
+export function signupWatcher(file) {
+    return { type: 'SIGNUP_WATCHER', payload: file };
 }
 export function userRemoveWatcher(email) {
     return { type: 'USER_REMOVE_WATCHER', payload: email };

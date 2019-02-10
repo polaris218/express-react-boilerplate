@@ -13,6 +13,7 @@ import {
 import {
   ajaxApi,
   uploadFileApi,
+  signupApi,
   downloadFileApi
 } from './ajaxApi';
 
@@ -37,12 +38,11 @@ export function* logoutEffectSaga() {
     console.log(e);
   }
 }
-export function* signupSaga(action, file) {
+export function* signupSaga(action) {
   try {
-    const { authParams, file } = action.payload;
-    const { data } = yield call(ajaxApi, 'POST', '/api/usersignup', authParams );
-    yield call(uploadFileApi, file);
-    console.log(file);
+    console.log(action.payload);
+    const { data } = yield call(signupApi, action.payload);
+    // yield call(uploadFileApi, file);
     if (data === 'signupFailed') {
       yield put(signupFailed());
     } else {

@@ -14,7 +14,8 @@ import PrivateRoute from './component/PrivateRoute';
 
 const muiStyles = () => ({
   wholeStyle: {
-    backgroundImage: `url(${'../img/bg-sign.jpg'})`
+    // backgroundImage: `url(${'../img/bg-sign.jpg'})`,
+    // backgroundImage: URL.createObjectURL('../img/bg-sign.jpg')
   }
 })
 class App extends Component {

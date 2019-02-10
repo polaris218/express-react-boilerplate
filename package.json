@@ -10,6 +10,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
+    "fs": "0.0.1-security",
     "http-errors": "^1.7.1",
     "jsonwebtoken": "^8.4.0",
     "material-ui-flat-pagination": "^3.2.0",

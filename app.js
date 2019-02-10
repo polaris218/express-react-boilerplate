@@ -4,8 +4,16 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import route from './routes/index';
 import ssrRouter from './routes/rendering';
+import mongoose from 'mongoose';
 
 const app = express();
+
+mongoose.set('useCreateIndex', true)
+mongoose.connect('mongodb://localhost/offerbrite',{ useNewUrlParser: true }, (err) => {
+    if (err) throw err;
+    console.log("successfully connected");
+});
+mongoose.Promise = global.Promise;
 
 app.use(cookieParser());
 app.use(express.json());

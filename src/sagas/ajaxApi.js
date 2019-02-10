@@ -15,13 +15,19 @@ export const ajaxApi = (method, url, authParams) => {
   });
 };
 
+export const signupApi = data => axios.request({
+  method: 'POST',
+  url: '/api/usersignup',
+  data
+}, console.log(data));
+
 export const uploadFileApi = file => axios.request({
   method: 'POST',
-  url: '/api/file',
+  url: '/api/createoffer',
   data: file,
-  // headers: {
-  //   'token': localStorage.getItem('token'),
-  // },
+  headers: {
+    'Authorization': localStorage.getItem('token'),
+  },
   onUploadProgress: (progressEvent) => {
     console.log(`upload progress${Math.round((progressEvent.loaded / progressEvent.total) * 100)}`);
   },
