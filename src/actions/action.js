@@ -9,6 +9,8 @@ import {
   privacyWatcher,
   offerDataWatcher,
   downloadWatcher,
+  setOfferIdWatcher,
+  getOfferViewWatcher
 } from './watchers';
 
 export const mapStateToProps = state => ({
@@ -19,6 +21,8 @@ export const mapStateToProps = state => ({
   userAdmin: state.userAdmin,
   userData: state.userData,
   offerData: state.offerData,
+  viewData: state.viewData,
+  offerId: state.offerId,
 });
 
 export const mapDispatchToProps = dispatch => bindActionCreators({
@@ -31,5 +35,7 @@ export const mapDispatchToProps = dispatch => bindActionCreators({
   privacyWatcher,
   offerDataWatcher,
   downloadWatcher,
+  setOfferIdWatcher,
+  getOfferViewWatcher,
 }, dispatch
 );

@@ -16,7 +16,6 @@ const imgStyles = {
   imgStyle: {
       width: '180px',
       height: '181px',
-      // float: 'right',
   },
 };
 
@@ -51,17 +50,20 @@ class ViewOffer extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
+
   }
 
   handleClick(event) {
     this.setState({ anchorEl: event.currentTarget });
+
   }
 
   handleClose() {
-    this.setState({ anchorEl: null })
+    this.setState({ anchorEl: null });
+
   }
   render() {
-    const { classes } = this.props;
+    const { classes, offerId } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     return (
@@ -122,7 +124,7 @@ class ViewOffer extends Component {
                     key={option} 
                     component={RouterLink} 
                     onClick={this.handleClose}
-                    to={`/${option}`}
+                    to={`/${option}/${offerId}`}
                   >
                     {option}
                   </MenuItem>

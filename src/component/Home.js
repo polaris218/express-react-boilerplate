@@ -62,6 +62,7 @@ class Home extends Component {
                 <Offerlist 
                   key={item._id}
                   title={item.title}
+                  offerId={item.offerId}
                   description={item.description}
                   choosedate={item.choosedate}
                   offer_image={item.offer_image}

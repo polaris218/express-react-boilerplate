@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
+import uuid from 'uuid-v4';
 
 const Schema = mongoose.Schema;
 const offerSchema = new Schema({
     _id: { type: mongoose.Schema.Types.ObjectId },
+    offerId: { type: String, default: uuid()},
     offer_image: {
         mainphoto: { data: Buffer, contentType: String },
         subphoto1: { data: Buffer, contentType: String },

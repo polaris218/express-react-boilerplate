@@ -9,6 +9,8 @@ import {
   uploadFile,
   privateDataSaga,
   downloadSaga,
+  setOfferIdSaga,
+  getOfferViewSaga
 } from './funcgen';
 
 /**
@@ -24,4 +26,6 @@ export default function* WatcherSaga() {
   yield takeLatest('UPLOAD_FILE_WATCHER', uploadFile);
   yield takeLatest('PRIVATE_FILE_DATA_WATCHER', privateDataSaga);
   yield takeLatest('DOWNLOAD_FILE_WATCHER', downloadSaga);
+  yield takeLatest('SET_OFFERID_WATCHER', setOfferIdSaga);
+  yield takeLatest('GET_OFFER_VIEW_WATCHER', getOfferViewSaga)
 }

@@ -30,7 +30,7 @@ class App extends Component {
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
               <PrivateRoute path="/createoffer" exact component={CreateOffer} />
-              <PrivateRoute path="/viewoffer" exact component={ViewOffer} />
+              <PrivateRoute path="/viewoffer/:offerid" exact component={ViewOffer} />
             </Switch>
           <Bottom />
         </div>

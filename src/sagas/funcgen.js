@@ -9,6 +9,8 @@ import {
   userAccessAsync,
   userTableContentRemove,
   privateDataAsync,
+  setOfferId,
+  getOfferView
 } from '../actions/actionCreators';
 import {
   ajaxApi,
@@ -35,6 +37,21 @@ export function* logoutEffectSaga() {
   try {
     yield put(logout());
   } catch (e) {
+    console.log(e);
+  }
+}
+export function* setOfferIdSaga(offerId) {
+  try{
+    yield put(setOfferId(offerId));
+  } catch(e) {
+    console.log(e);
+  }
+}
+export function* getOfferViewSaga(action) {
+  try{
+    const { data } = yield call(ajaxApi, 'GET', '/api/viewdata', {offerId: action.payload});
+    yield put(getOfferView(data));
+  } catch(e) {
     console.log(e);
   }
 }

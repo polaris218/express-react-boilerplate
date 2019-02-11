@@ -8,7 +8,8 @@ import {
 } from '../controllers/userController';
 import {
     fileUpload,
-    getOfferData
+    getOfferData,
+    getOfferView,
 } from '../controllers/offerController';
 import { tokenCheck } from '../middleware/token';
 
@@ -17,6 +18,8 @@ const router = express.Router();
 router.get('/userinfo', userInfo);
 
 router.get('/offerdata', getOfferData);
+
+router.get('/viewdata', getOfferView)
 
 // router.get('/filedownload', fileDownload);
 

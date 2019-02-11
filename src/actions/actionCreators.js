@@ -1,4 +1,4 @@
-export function login(data) {
+  export function login(data) {
     return { type: 'LOGIN_ASYNC', payload: data };
   }
   export function loginFailed() {
@@ -24,4 +24,10 @@ export function login(data) {
   }
   export function privateDataAsync(data) {
     return { type: 'PRIVATE_DATA_ASYNC', payload: data };
+  }
+  export function setOfferId(offerId) {
+    return { type: 'SET_OFFERID_ASYNC', payload: offerId };
+  }
+  export function getOfferView(viewdata) {
+    return { type: 'GET_OFFER_VIEW_ASYNC', payload: viewdata };
   }

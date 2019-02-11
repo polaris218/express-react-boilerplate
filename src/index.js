@@ -4,10 +4,11 @@ import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Router } from 'react-router-dom';
 
-import './index.css';
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './configureStore';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 const customHistory = createBrowserHistory();
@@ -22,7 +23,9 @@ const initialState = {
     updateFailed: false,
     userData: [],
     offerData: [],
+    viewData: null,
     token: '',
+    offerId: null,
     userAdmin: '',
 };
 

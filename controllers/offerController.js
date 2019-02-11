@@ -106,6 +106,14 @@ export const getOfferData = (req, res, err) => {
   });
 };
 
+export const getOfferView = (req, res, err) => {
+  // console.log(req.headers.offerid);
+  const { offerid } = req.headers;
+  Offer.findOne({ offerId: offerid }).exec((err, data) => {
+    if(err) res.status(500).send();
+    res.status(200).send(data);
+  });
+}
 export const fileDownload = (req, res) => {
   const { fileid } = req.headers;
   fileload.findOne({

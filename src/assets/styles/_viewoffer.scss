@@ -1,0 +1,100 @@
+$description_color: #999;
+$title_color: #333;
+$discount_color: #39b54a;
+.offer-intro {
+    color: $description_color;
+    .viewoffer-title {
+        width: 100%;
+        color: #fc7603;
+        font-weight: 500;
+        font-size: 24px;
+    }
+    // .offer-subtitle {
+
+    // }
+    .offer-price {
+        .offer-old-price {
+            width: 100%;
+            line-height: 1px;
+            text-decoration: line-through;
+        }
+        .offer-new-price {
+            font-size: 36px;
+            font-weight: 900;
+            color: $title_color;
+            line-height: 36px;
+        }
+        .offer-discount-value, .offer-discount {
+            color: $discount_color;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .offer-salestime {
+            color: $title_color;
+            .clock {
+                margin-top: 8px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .offer-description {
+        h5 {
+            color: $title_color;
+            font-weight: 900;
+        }
+        label {
+            font-weight: 400;
+            color: #717171;
+            line-height: 30px;
+            font-size: 18px;
+        }
+    }
+    .offer-user-info {
+        background-color: #f4f4f4;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        img {
+            max-width: 94px;
+        }
+        .user-info {
+            margin-left: 3%;
+        }
+        small {
+            strong{
+                background-color: #ff0000;
+                color: #ffffff;
+                margin-left: 20px;
+                border-radius: 5px;
+                padding-left: 3px;
+                padding-right: 3px;
+            }
+            
+        }
+        strong {
+            color: #3f3f3f;
+        }
+        .user-mail {
+            color: #315065;
+        }
+    }
+    .buyout {
+        background-color: #ff9c02;
+        padding: 15px 40px;
+        color: #7b3900;
+        border-bottom: #fc7603 3px solid;
+        border-radius: 15px;
+        border-top: #ffc301 1px solid;
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 28px;
+        float: left;
+        clear: both;
+        margin-top: 40px;
+    }
+    .buyout:hover {
+        background-color: #fc7603;
+        color: #6b3100;
+        border-bottom: #b95500 3px solid;
+        border-top: #ff9c02 1px solid;
+    }
+}

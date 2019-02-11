@@ -45,7 +45,8 @@ const setUserloginState = (state, action) => {
     }
     return Object.assign(
       {},
-      state, { userAdmin: 'accss_denied' },
+      state, 
+      { userAdmin: 'accss_denied' },
     );
   };
   
@@ -75,8 +76,11 @@ const setUserloginState = (state, action) => {
       case 'REMOVE_CONTENT_ASYNC':
         return removeTableContent(state, action);
       case 'PRIVATE_DATA_ASYNC':
-        console.log(action.payload);
         return privateDataTable(state, action);
+      case 'SET_OFFERID_ASYNC':
+        return Object.assign({}, state, { offerId: action.payload.offerId});
+      case 'GET_OFFER_VIEW_ASYNC':
+        return Object.assign({}, state, { viewData: action.payload });
       default:
         return state;
     }

@@ -115,6 +115,11 @@ class Bottom extends Component {
                 Contact Us
               </Typograhpy>
             </Link>
+            <Typograhpy
+                className={classes.article}
+            >
+                +000 0000 0000
+            </Typograhpy>
           </Grid>
           <Grid item md={6}>
             <GoogleMap />

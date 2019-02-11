@@ -25,4 +25,9 @@ export function privacyWatcher(authParams) {
 export function downloadWatcher(fileId) {
     return { type: 'DOWNLOAD_FILE_WATCHER', payload: fileId };
 }
-  
+export function setOfferIdWatcher(offerId) {
+    return { type: 'SET_OFFERID_WATCHER', payload: offerId };
+}
+export function getOfferViewWatcher(offerId) {
+    return { type: 'GET_OFFER_VIEW_WATCHER', payload: offerId };
+}
