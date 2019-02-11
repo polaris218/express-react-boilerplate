@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../actions/action';
 
 import PaginationBar from './Category/PaginationBar';
 import Offerlist from './Category/Offerlist';
@@ -17,7 +19,7 @@ const muiStyle = theme => ({
         margin: 'auto',
         width: '60%',
     }
-})
+});
 
 class Home extends Component {
 
@@ -33,12 +35,15 @@ class Home extends Component {
     this.setState({offset})
   }
 
+  componentWillMount() {
+    this.props.offerDataWatcher();
+  }
   /**
    * @see https://www.npmjs.com/package/material-ui-flat-pagination
    * for pagination
    */
   render() { 
-    const { classes } = this.props;
+    const { classes, offerData } = this.props;
     return (
       <div className={classes.root}>
         <Grid container justify="center">
@@ -52,8 +57,18 @@ class Home extends Component {
             <PaginationBar />
           </Grid>
           <Grid item md={1}></Grid>
-            <Offerlist />
-            <Offerlist />
+            {
+              offerData.map((item, key) => (
+                <Offerlist 
+                  key={item._id}
+                  title={item.title}
+                  description={item.description}
+                  choosedate={item.choosedate}
+                  offer_image={item.offer_image}
+                />
+              ))
+            }
+            {/* <Offerlist /> */}
           <Grid item md={1}></Grid>
           <PaginationBar />
         </Grid>
@@ -62,4 +77,4 @@ class Home extends Component {
   }
 }
  
-export default withStyles(muiStyle)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(muiStyle)(Home));

@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const offerSchema = new Schema({
     _id: { type: mongoose.Schema.Types.ObjectId },
     offer_image: {
-        mainphoto: { type: String },
-        subphoto1: { type: String },
-        subphoto2: { type: String },
-        subphoto3: { type: String },
+        mainphoto: { data: Buffer, contentType: String },
+        subphoto1: { data: Buffer, contentType: String },
+        subphoto2: { data: Buffer, contentType: String },
+        subphoto3: { data: Buffer, contentType: String },
     },
     title: { type: String, required: true},
     description: { type: String },

@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
   } ,
   filename(req, file, cb) {
     // cb(null, `${file.originalname}`);
-    fileid[i] = `${uuid()}${path.extname(file.originalname)}`;
+    fileid[i] = `${uuid()}`;
     cb(null, `${fileid[i]}${path.extname(file.originalname)}`);
     i++;
     Offer.updateOne({
@@ -46,10 +46,10 @@ export const fileUpload = (req, res) => {
       console.log(err.message);
       res.status(404).send(err);
       // An unknown error occurred when uploading.
-    } else {
+    } else {      
       const { 
         title,
-        desciprition,
+        description,
         startdate,
         enddate,
         fullprice,
@@ -59,16 +59,17 @@ export const fileUpload = (req, res) => {
         phone,
         site,
       } = req.body;
+
       Offer.create({
         _id: mongoose.Types.ObjectId(),
         offer_image: {
-          mainphoto: fileid[0],
-          subphoto1: fileid[1],
-          subphoto2: fileid[2],
-          subphoto3: fileid[3],
+          mainphoto: { data: fs.readFileSync(req.files[0].path), contentType: 'image/png' },
+          subphoto1: {data: fs.readFileSync(req.files[1].path), contentType: 'image/png' },
+          subphoto2: { data: fs.readFileSync(req.files[2].path), contentType: 'image/png' },
+          subphoto3: { data: fs.readFileSync(req.files[3].path), contentType: 'image/png' },
         },
         title,
-        desciprition,
+        description,
         choosedate: {
           from : startdate,
           to: enddate,
@@ -99,6 +100,12 @@ export const fileUpload = (req, res) => {
  * 
  */
 
+export const getOfferData = (req, res, err) => {
+  Offer.find({}, (err, data) => {
+    res.status(200).send(data);
+  });
+};
+
 export const fileDownload = (req, res) => {
   const { fileid } = req.headers;
   fileload.findOne({
@@ -119,5 +126,4 @@ export const fileDownload = (req, res) => {
     .catch(_err => {
       res.status(404).send('failed');
   })
-  // './upload/GitHubDesktopSetup.exe'
 };

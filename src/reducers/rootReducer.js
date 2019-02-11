@@ -52,7 +52,7 @@ const setUserloginState = (state, action) => {
   const privateDataTable = (state, action) => Object.assign(
     {}, 
     state,
-    { privateData: action.payload },
+    { offerData: action.payload },
   );
   
   const rootReducer = (state, action) => {
@@ -75,6 +75,7 @@ const setUserloginState = (state, action) => {
       case 'REMOVE_CONTENT_ASYNC':
         return removeTableContent(state, action);
       case 'PRIVATE_DATA_ASYNC':
+        console.log(action.payload);
         return privateDataTable(state, action);
       default:
         return state;

@@ -13,7 +13,7 @@ export function userRemoveWatcher(email) {
 export function userAccessWatcher() {
     return { type: 'USER_ACCESS_WATCHER' };
 }
-export function privateDataWatcher() {
+export function offerDataWatcher() {
     return { type: 'PRIVATE_FILE_DATA_WATCHER' };
 }
 export function userInfoWatcher(authParams) {

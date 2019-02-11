@@ -55,7 +55,7 @@ class Logout extends Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.handleClose}>Account</MenuItem>
-                <MenuItem component={RouterLink} to="/" onClick={this.handleLogout}>Logout</MenuItem>
+                <MenuItem component={RouterLink} to="/login" onClick={this.handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
         );

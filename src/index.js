@@ -21,7 +21,7 @@ const initialState = {
     signupFailed: false,
     updateFailed: false,
     userData: [],
-    privateData: [],
+    offerData: [],
     token: '',
     userAdmin: '',
 };

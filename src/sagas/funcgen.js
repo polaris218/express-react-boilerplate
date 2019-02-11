@@ -100,7 +100,7 @@ export function* privateDataSaga() {
     token: localStorage.getItem('token'),
   };
   try {
-    const { data } = yield call(ajaxApi, 'GET', '/api/privatedata', payload);
+    const { data } = yield call(ajaxApi, 'GET', '/api/offerdata', payload);
     yield put(privateDataAsync(data));
   } catch (e) {
     console.log(e);

@@ -7,7 +7,8 @@ import {
     userRemove,
 } from '../controllers/userController';
 import {
-    fileUpload
+    fileUpload,
+    getOfferData
 } from '../controllers/offerController';
 import { tokenCheck } from '../middleware/token';
 
@@ -15,7 +16,7 @@ const router = express.Router();
 
 router.get('/userinfo', userInfo);
 
-// router.get('/privatedata', getPrivateData);
+router.get('/offerdata', getOfferData);
 
 // router.get('/filedownload', fileDownload);
 

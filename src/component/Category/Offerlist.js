@@ -32,8 +32,22 @@ const ITEM_HEIGHT = 48;
 class ViewOffer extends Component {
   constructor(props) {
     super(props);
+
+    /**
+     * @see https://medium.com/@colinrlly/send-store-and-show-images-with-react-express-and-mongodb-592bc38a9ed
+     * Article for mongoose binary data to Image
+     */
+    const { offer_image } = this.props;
+    const buffer = offer_image.mainphoto.data.data;
+    let binary = '';
+    let bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary +=String.fromCharCode(b));
+    const imgStr = window.btoa(binary);
+    const base64Flag = 'data:image/png;base64,';
+
     this.state = {
       anchorEl: null,
+      mainphoto: base64Flag + imgStr,
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -62,7 +76,7 @@ class ViewOffer extends Component {
               <img 
                 className={classes.img} 
                 alt="complex" 
-                src={require('../../assets/img/dummy-test.jpg')}
+                src={this.state.mainphoto}
                 style={imgStyles.imgStyle} 
               />
             </ButtonBase>
@@ -71,18 +85,17 @@ class ViewOffer extends Component {
             <Grid item xs container direction="column" spacing={16}>
               <Grid item xs md={12}>
                 <Typography gutterBottom variant="subtitle1">
-                  #0000000000
+                  {this.props.title}
                 </Typography>
                 <Typography className={classes.offerdesc} gutterBottom variant="h5">
-                  LED TV Backlights,Govee WiFi Dreamcolor TV Lights Kit with Camera, 
-                  8.5 Ft TV Led Strip Lights, Neon TV Ambient Bias Lighting for 55"-80" TV
+                  {this.props.description}
                 </Typography>
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
             <Typography className={classes.date}>
-              MM/DD/YYYY
+              {this.props.choosedate.from}
             </Typography>
           </Grid>
           <Grid item>
