@@ -9,6 +9,10 @@ import Signup from './component/Signup';
 import CreateOffer from './component/CreateOffer';
 import ViewOffer from './component/ViewOffer';
 import Bottom from './component/Bottom';
+import Story from './component/Story';
+import UserAgreement from './component/UserAgreement';
+import PrivacyPolicy from './component/PrivacyPolicy';
+import Press from './component/Press';
 
 import PrivateRoute from './component/PrivateRoute';
 
@@ -29,6 +33,10 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/login" exact component={Login} />
               <Route path="/signup" exact component={Signup} />
+              <Route path="/story" exact component={Story} />
+              <Route path="/useragreement" exact component={UserAgreement} />
+              <Route path="/privacypolicy" exact component={PrivacyPolicy} />
+              <Route path="/press" exact component={Press} />
               <PrivateRoute path="/createoffer" exact component={CreateOffer} />
               <PrivateRoute path="/viewoffer/:offerid" exact component={ViewOffer} />
             </Switch>

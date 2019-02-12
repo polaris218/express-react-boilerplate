@@ -5,14 +5,14 @@ import Typography from '@material-ui/core/Typography';
 
 import muiStyles from '../assets/styles/articles';
 
-class Story extends Component {
+class UserAgreement extends Component {
     
     render() { 
         const { classes } = this.props
         return ( 
             <Paper className={classes.root} elevation={1} square>
                 <Typography className={classes.title} variant="h5" component="title">
-                    Story
+                    User Agreement
                 </Typography>
                 <Typography component="p" className={classes.article}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis maximus ligula. Sed maximus finibus quam elementum porta. Maecenas ullamcorper vehicula ipsum non ultricies. Maecenas cursus eros eget diam ultricies, eget tincidunt ipsum gravida. Etiam interdum, mi nec accumsan pharetra, diam lacus convallis lorem, eu rhoncus ligula ex non turpis. Aenean sit amet est non mi mattis cursus id sit amet mauris. Nunc ac vulputate nisi. Nulla facilisi.
@@ -31,4 +31,4 @@ class Story extends Component {
     }
 }
  
-export default withStyls(muiStyles)(Story);
+export default withStyls(muiStyles)(UserAgreement);
