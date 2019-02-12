@@ -35,7 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently --kill-others-on-fail \"nodemon index.js\" \"npm start\"",
-    "prod": "webpack --mode production index.js --config webpack.config.backend.js "
+    "prod": "webpack --mode production --config webpack.config.js "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +47,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "8.0.4",
