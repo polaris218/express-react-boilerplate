@@ -102,6 +102,7 @@ export const fileUpload = (req, res) => {
 
 export const getOfferData = (req, res, err) => {
   Offer.find({}, (err, data) => {
+    console.log(data);
     res.status(200).send(data);
   });
 };

@@ -18,11 +18,11 @@ mongoose.Promise = global.Promise;
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api', route);
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
+    res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 /**
  * @param {ssrRouter} crucial part for ServerSideRendering

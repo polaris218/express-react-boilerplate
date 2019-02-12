@@ -37,7 +37,7 @@ class Home extends Component {
     this.setState({offset})
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.offerDataWatcher();
   }
   /**
@@ -46,7 +46,6 @@ class Home extends Component {
    */
   render() { 
     const { classes, offerData } = this.props;
-    console.log(offerData);
     return (
       <div className={classes.root}>
         <Grid container justify="center">
