@@ -3,6 +3,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { mapStateToProps, mapDispatchToProps } from '../actions/action';
 
 import PaginationBar from './Category/PaginationBar';
@@ -13,7 +14,8 @@ const muiStyle = theme => ({
         display: 'inline-block',
     },
     pagination: {
-        margin: 'auto',
+      marginTop: theme.spacing.unit * 5,
+      margin: 'auto',
     },
     root: {
         margin: 'auto',
@@ -44,23 +46,24 @@ class Home extends Component {
    */
   render() { 
     const { classes, offerData } = this.props;
+    console.log(offerData);
     return (
       <div className={classes.root}>
         <Grid container justify="center">
-          <Grid item md={5}>
+          <Grid item md={5} className={classes.pagination}>
             <Typography component="h3" variant="h6">
                 Products
             </Typography>
           </Grid>
           
-          <Grid item md={6}>
+          <Grid item md={6} className={classes.pagination}>
             <PaginationBar />
           </Grid>
           <Grid item md={1}></Grid>
             {
               offerData.map((item, key) => (
                 <Offerlist 
-                  key={item._id}
+                  key={key}
                   title={item.title}
                   offerId={item.offerId}
                   description={item.description}
@@ -69,7 +72,6 @@ class Home extends Component {
                 />
               ))
             }
-            {/* <Offerlist /> */}
           <Grid item md={1}></Grid>
           <PaginationBar />
         </Grid>
@@ -77,5 +79,7 @@ class Home extends Component {
     );
   }
 }
- 
+Home.propTypes = {
+  offerData: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(muiStyle)(Home));

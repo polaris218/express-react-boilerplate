@@ -71,7 +71,6 @@ class ViewOffer extends Component {
       discount,
       fullprice,
     });
-    console.log(props.viewData.choosedate);
   }
 
   handleBufferToImage(buffer) {

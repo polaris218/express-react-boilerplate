@@ -19,6 +19,7 @@ const muiStyles = theme => ({
         fontWeight: 400,
         lineHeight: '30px',
         fontSize: 18,
+        textDecoration: 'none',
     }
 });
 

@@ -48,6 +48,7 @@ class Logout extends Component {
                 onClick={this.handleClick}
               >
                 My account
+                <i className="fa fa-caret-down"></i>
               </Button>
               <Menu
                 anchorEl={anchorEl}
