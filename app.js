@@ -14,7 +14,6 @@ mongoose.connect('mongodb://localhost/offerbrite',{ useNewUrlParser: true }, (er
 });
 mongoose.Promise = global.Promise;
 
-console.log(process.env.NODE_ENV);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -15,13 +15,17 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          // options: {
-          //   presets:['@babel/preset-env'],
-          // }
+          query: {
+            babelrc: false,
+          }
         },
       },
     ],
   },
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
   externals: [nodeExternals()],
 };

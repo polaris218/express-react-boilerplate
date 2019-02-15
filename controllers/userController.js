@@ -5,6 +5,7 @@ import multer from 'multer';
 import path from 'path';
 import User from '../models/userSchema';
 import { tokenSign } from '../middleware/token';
+import mongoose from 'mongoose';
 
 const saltRounds = 10;
 let basicuuid = '';
@@ -51,6 +52,7 @@ export const userSignup = (req, res) => {
     } else {
       const { username, email, password } = req.body;
       User.create({
+        _id: mongoose.Types.ObjectId(),
         businessName: username,
         businessEmail: email,
         password,
