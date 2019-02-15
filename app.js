@@ -7,6 +7,15 @@ import mongoose from 'mongoose';
 
 const app = express();
 
+app.use(require('cors')());
+
+const port  = process.env.PORT || 8080;
+const server = require('http').Server(app);
+
+server.listen(port, () => {
+    console.log(`server listening-->${port}`);
+});
+
 mongoose.set('useCreateIndex', true)
 mongoose.connect('mongodb://localhost/offerbrite',{ useNewUrlParser: true }, (err) => {
     if (err) throw err;
@@ -14,14 +23,14 @@ mongoose.connect('mongodb://localhost/offerbrite',{ useNewUrlParser: true }, (er
 });
 mongoose.Promise = global.Promise;
 
+console.log(__dirname);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/api', route);
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
+    res.sendFile(path.join(__dirname, 'index.html'))
 });
 /**
  * @param {ssrRouter} crucial part for ServerSideRendering
