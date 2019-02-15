@@ -1,5 +1,3 @@
-require('babel-register')({
-    presets: ['env'],
-  });
+require('babel-register');
 require('./bin/www');
   
