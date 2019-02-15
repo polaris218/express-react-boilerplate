@@ -43,4 +43,4 @@ app.use((err, req, res) => {
     res.json({});
 });
   
-module.exports = app;
+export default app;
