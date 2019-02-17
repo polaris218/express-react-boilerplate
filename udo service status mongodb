@@ -1,0 +1,12 @@
+[0;1;31m●[0m mongod.service - High-performance, schema-free document-oriented database
+   Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor preset: enabled)
+   Active: [0;1;31mfailed[0m (Result: exit-code) since Sun 2019-02-17 08:17:47 UTC; 3min 17s ago
+     Docs: https://docs.mongodb.org/manual
+  Process: 3051 ExecStart=/usr/bin/mongod --config /etc/mongod.conf [0;1;31m(code=exited, status=2)[0m
+ Main PID: 3051 (code=exited, status=2)
+
+Feb 17 08:17:47 offerbite-dev systemd[1]: Started High-performance, schema-free document-oriented database.
+Feb 17 08:17:47 offerbite-dev mongod[3051]: Error parsing YAML config file: yaml-cpp: error at line 24, column 3: end of map not found
+Feb 17 08:17:47 offerbite-dev mongod[3051]: try '/usr/bin/mongod --help' for more information
+Feb 17 08:17:47 offerbite-dev systemd[1]: [0;1;39m[0;1;31m[0;1;39mmongod.service: Main process exited, code=exited, status=2/INVALIDARGUMENT[0m
+Feb 17 08:17:47 offerbite-dev systemd[1]: [0;1;39m[0;1;31m[0;1;39mmongod.service: Failed with result 'exit-code'.[0m
